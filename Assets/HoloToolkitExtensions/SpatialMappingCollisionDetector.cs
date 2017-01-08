@@ -1,6 +1,4 @@
-﻿using System;
-using UnityEngine;
-using HoloToolkit.Unity.SpatialMapping;
+﻿using UnityEngine;
 
 namespace LocalJoost.HoloToolkitExtensions
 {
@@ -20,8 +18,9 @@ namespace LocalJoost.HoloToolkitExtensions
         public override bool CheckIfCanMoveBy(Vector3 delta)
         {
             RaycastHit hitInfo;
-            // Sweeptest wisdom from http://answers.unity3d.com/questions/499013/cubecasting.html
-            return  !_rigidbody.SweepTest(delta, out hitInfo, delta.magnitude);
+            // Sweeptest wisdom from 
+            // http://answers.unity3d.com/questions/499013/cubecasting.html
+            return !_rigidbody.SweepTest(delta, out hitInfo, delta.magnitude);
         }
 
         public override Vector3 GetMaxDelta(Vector3 delta)
@@ -29,11 +28,11 @@ namespace LocalJoost.HoloToolkitExtensions
             RaycastHit hitInfo;
             if(!_rigidbody.SweepTest(delta, out hitInfo, delta.magnitude))
             {
-                return KeepDistance(delta, hitInfo.point); ;
+                return KeepDistance(delta, hitInfo.point);
             }
 
             delta *= (hitInfo.distance / delta.magnitude);
-            for (var i = 0; i < 9; i += 3)
+            for (var i = 0; i <= 9; i += 3)
             {
                 var dTest = delta / (i + 1);
                 if (!_rigidbody.SweepTest(dTest, out hitInfo, dTest.magnitude))
