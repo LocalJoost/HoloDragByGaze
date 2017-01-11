@@ -34,7 +34,7 @@ namespace LocalJoost.HoloToolkitExtensions
             _isJustEnabled = true;
             if (CollisonDetector == null)
             {
-                CollisonDetector = new DefaultMappingCollisionDetector();
+                CollisonDetector = gameObject.AddComponent<DefaultMappingCollisionDetector>();
             }
         }
 
