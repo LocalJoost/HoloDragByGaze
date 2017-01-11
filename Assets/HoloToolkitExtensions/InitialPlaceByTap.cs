@@ -8,7 +8,7 @@ namespace LocalJoost.HoloToolkitExtensions
         protected AudioSource Sound;
         protected MoveByGaze GazeMover;
 
-        void Start()
+        protected void Start()
         {
             Sound = GetComponent<AudioSource>();
             GazeMover = GetComponent<MoveByGaze>();
@@ -16,7 +16,7 @@ namespace LocalJoost.HoloToolkitExtensions
             InputManager.Instance.PushFallbackInputHandler(gameObject);
         }
 
-        public void OnInputClicked(InputEventData eventData)
+        public virtual void OnInputClicked(InputEventData eventData)
         {
             if (!GazeMover.IsActive)
             {
